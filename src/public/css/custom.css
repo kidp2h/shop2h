@@ -1,0 +1,64 @@
+/*--------------------------------------------------------------
+  Template Name: Tmart-Minimalist eCommerce HTML5 Template.
+  Template URI: #
+  Description: Tmart is a unique website template designed in HTML with a simple & beautiful look. There is an excellent solution for creating clean, wonderful and trending material design corporate, corporate any other purposes websites.
+  Author: Theme365
+  Version: 1.0
+---------------------------------------------------------------*/
+
+/* ----------------------------------------------------
+	You can put your custom css code here: 
+-------------------------------------------------------*/
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+li.drop::after {
+  content: "";
+  background-color: transparent;
+  width: 35px;
+  height: 55px;
+  position: absolute;
+  top: 60%;
+}
+.tabs__checkbox{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.remember-me{
+  display: flex;
+  align-items: center;
+}
+input[type=checkbox] {
+  margin: 0;
+}
+.offsetmenu__logo{
+  width: 65%;
+}
+.validate-text {
+  font-size: 14px;
+  color: red;
+  visibility: hidden;
+  transition: 1s linear;
+}
+input {
+  margin: 15px;
+}
+#register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn-register{
+  margin-top: 15px;
+}
+.remember-me {
+  margin-right: 50px;
+}
+div#captcha-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

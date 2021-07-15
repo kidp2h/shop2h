@@ -1,0 +1,4 @@
+{
+    "presets": ["@babel/preset-env","@babel/preset-typescript"],
+    "ignore": ["./src/public","node_modules"],
+}
