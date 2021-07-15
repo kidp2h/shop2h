@@ -1,1 +1,1 @@
-*.ejs linguist-vendored
+src/views/* linguist-vendored
