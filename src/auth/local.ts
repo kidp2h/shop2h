@@ -8,11 +8,10 @@ import {IUser} from "../types/User"
 export const InitializePassport = () : void => {
     Passport.use(new Local.Strategy(async function(username, password, done){
         let user = await UserUtility.checkAccount(username, password);
-        console.log(user);
         if(user){
             return done(null, user);
         }else{
-            return done({result : false},null);
+            return done(null,false);
         }
     }))
 

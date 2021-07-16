@@ -7,13 +7,17 @@ import dotenv from "dotenv"; dotenv.config();
 import session from "express-session";
 import cors from "cors"
 import passport from "passport"
+import sessionMemoryStore from "session-memory-store";
 // Routes
 import Routers from "./routes/Routers"
 // Database
 import Database from "./config/Database";
 // Authenticate
 import {InitializePassport} from "./auth/local"
+//Middleware
+import {UserMiddleware} from "./middlewares/UserMiddleware"
 
+const Store = sessionMemoryStore(session)
 class App {
 
     public express: express.Application
@@ -22,7 +26,6 @@ class App {
         this.express = express();
         this.configApp();
         new Database();
-
     }
 
     public configApp() {
@@ -42,13 +45,15 @@ class App {
             secret: 'keyboard cat',
             resave:true,
             saveUninitialized: true,
-            cookie: { maxAge: 1000 * 60 * 50 }
+            cookie: { maxAge: 1000 * 60 * 50}
         }))
         // passport middleware
         app.use(passport.initialize());
         app.use(passport.session());
         // initialize passport
-        
+        InitializePassport();
+        // middlwares app
+        // UserMiddleware.RenderDataUser();
         // initialize router
         app.use("/", Routers.IndexRouter);
         app.use("/user", Routers.UserRouter);

@@ -1,10 +1,17 @@
-import { Request, Response, NextFunction } from "express"
+import { Request, Response } from "express"
 import axios from "axios"
 import UserModel from "../models/UserModel"
-import { IUser } from "../types/User"
 
 
 export default new class UserController {
+    async getLogin(req : Request, res : Response) {
+        if(req.isAuthenticated()){
+            res.render("shop",{user : req.user});
+        }else{
+            res.render("login-register",{siteKey : process.env.SITE_KEY})
+        }
+        
+    }
     async postRegister(req: Request, res: Response) {
         const data = req.body
 
@@ -28,6 +35,9 @@ export default new class UserController {
     }
 
     postLogin(req : Request, res : Response){
-        return res.status(200).json({message:"success"})
+        console.log(req.user);
+        if(req.user){
+            return res.status(200).json({message : "success"});
+        }
     }
 }

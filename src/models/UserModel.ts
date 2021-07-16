@@ -32,7 +32,7 @@ UserSchema.statics = {
         return await this.findOne({ email : email})   
     },
     async findUserById(id : IUser["_id"]){
-        return await this.findOne({id : id});
+        return await this.findOne({_id : id});
     }
 }
 UserSchema.methods = {
