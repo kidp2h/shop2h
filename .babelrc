@@ -1,4 +1,15 @@
 {
-    "presets": ["@babel/preset-env","@babel/preset-typescript"],
-    "ignore": ["./src/public","node_modules"],
+  "presets": ["@babel/preset-env", "@babel/preset-typescript"],
+  "ignore": ["./src/public", "node_modules"],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "absoluteRuntime": false,
+        "corejs": false,
+        "helpers": true,
+        "regenerator": true
+      }
+    ]
+  ]
 }

@@ -1,7 +1,7 @@
 import Mongoose, {Schema} from "mongoose"
 import dotenv from "dotenv";dotenv.config();
 import bcrypt from "bcrypt"
-import  {IUser, IUserModel} from "../Types/User";
+import  {IUser, IUserModel} from "../types/User";
 
 const UserSchema : Schema<IUser, IUserModel>  = new Schema<IUser>({
     username : {

@@ -1,7 +1,7 @@
 const path = require("path");
 const nodeExternals = require("webpack-node-externals")
 module.exports = {
-    entry: {server:"./src/server.ts"},
+    entry: {polyfill : '@babel/polyfill',server:"./src/server.ts"},
     output: { path: path.join(__dirname, "./dist"), filename: "[name].js" },
     mode:"development",
     target:"node",
@@ -9,7 +9,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(ts)$/,
-                use: ["ts-loader"],
+                use: ["babel-loader"],
             }  
         ]
     },
