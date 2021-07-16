@@ -14,7 +14,6 @@ $(function () {
         e.preventDefault();
         //box captcha register
         const responseCaptcha = grecaptcha.getResponse(1);
-        console.log(responseCaptcha);
         let values = getValuesInForm(["#username", "#email", "#password", "#re-password"])
         if (values.length != 4) {
             sweet.fire('Notification', 'Please fill information into the form', 'warning')
@@ -75,10 +74,10 @@ $(function () {
                 url: "/user/login",
                 data:{username : values[0], password : values[1]},
                 success: function (response) {
-                    
+                    window.location.replace(`${window.location.origin}/shop`);
                 },
                 error : function (response) {
-
+                    sweet.fire("Notification", "Username or password incorrect. Please try again !!", "error")
                 }
             });
         }
