@@ -23,8 +23,5 @@ router.get("/about",(req : express.Request, res : express.Response) : void => {
 router.get("/blog",(req : express.Request, res : express.Response) : void => {
     res.render("blog");
 })
-router.get("/shop",(req : express.Request, res : express.Response) : void => {
-    res.render("shop");
-})
 
 export default router;
