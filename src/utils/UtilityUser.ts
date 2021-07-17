@@ -13,7 +13,5 @@ export namespace UserUtility {
         }else{
             return false
         }
-        
-    
     }
 }

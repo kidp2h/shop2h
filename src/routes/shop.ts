@@ -3,7 +3,7 @@ import express , {Router, Request, Response} from "express"
 const router : Router = express.Router();
 
 router.get("/",(req : Request, res : Response) : void => {
-    res.render("shop")
+    res.render("shop", {user : req.user});
 })
 router.get("/product-details",(req : Request, res : Response) : void => {
     res.render("product-details")

@@ -2,7 +2,7 @@ import sweet from "sweetalert2";
 import _ from "lodash";
 
 $(function () {
-
+    
     function getValuesInForm([...selectors]: Array<string>): Array<any> {
         let values = [];
         selectors.forEach(element => {
