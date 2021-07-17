@@ -5,13 +5,10 @@ import Passport from "passport"
 
 const router: Router = express.Router();
 
-
 router.get("/", UserController.getLogin);
+router.get("/logout", UserController.getLogout);
 
 router.post("/register", UserController.postRegister);
 router.post("/login", Passport.authenticate("local"),UserController.postLogin);
-router.get("/logout", UserController.getLogout);
-
-
 
 export default router;

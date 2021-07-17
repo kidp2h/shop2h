@@ -1,5 +1,5 @@
 //Library
-import express from "express";
+import express, {Request, Response, NextFunction} from "express";
 import path from "path";
 import cookieParser from "cookie-parser"
 import logger from "morgan"
@@ -29,7 +29,7 @@ class App {
     }
 
     public configApp() {
-        const app = this.express;
+        const app : express.Application = this.express;
         //set views engine
         app.set('views', path.join(__dirname, "views"));
         app.set("view engine", "ejs");
@@ -53,13 +53,11 @@ class App {
         // initialize passport
         InitializePassport();
         // middlwares app
-        // UserMiddleware.RenderDataUser();
+        UserMiddleware.RenderDataUser(app);
         // initialize router
         app.use("/", Routers.IndexRouter);
         app.use("/user", Routers.UserRouter);
         app.use("/shop", Routers.ShopRouter);
-        
-        
     }
 }
 

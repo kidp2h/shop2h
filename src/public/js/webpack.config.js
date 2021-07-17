@@ -5,7 +5,7 @@ module.exports = {
     output: { path: path.join(__dirname, "../../../dist/public/js"), filename: "[name].js" },
     mode: 'development',
         resolve: {
-        extensions: [".ts"],
+        extensions: [".ts",".js"],
     },
     module: {
         rules: [

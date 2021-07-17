@@ -4,17 +4,22 @@ import UserModel from "../models/UserModel"
 
 
 export default new class UserController {
+    
+    getLogout(req : Request, res : Response){
+        req.logout();
+        res.redirect("/user");
+    }
+
     async getLogin(req : Request, res : Response) {
         if(req.isAuthenticated()){
             res.render("shop",{user : req.user});
         }else{
             res.render("login-register",{siteKey : process.env.SITE_KEY})
         }
-        
     }
+
     async postRegister(req: Request, res: Response) {
         const data = req.body
-
         let response = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_KEY}&response=${data.captcha}&remoteip=${req.connection.remoteAddress}`)
         if (response.data.success) {
             let userExist = await UserModel.findUserByUsername(data.username)
@@ -35,14 +40,8 @@ export default new class UserController {
     }
 
     postLogin(req : Request, res : Response){
-        console.log(req.user);
         if(req.user){
             return res.status(200).json({message : "success"});
         }
-    }
-
-    getLogout(req : Request, res : Response){
-        req.logout();
-        res.redirect("/user");
     }
 }
