@@ -62,3 +62,18 @@ div#captcha-login {
   align-items: center;
   justify-content: center;
 }
+
+.htc__soaial__list {
+  display: flex;
+  margin-top: -10px;
+  justify-content: center;
+}
+
+.htc__social__connect h2 {
+  color: #000;
+  font-size: 16px;
+  margin-bottom: 25px;
+  margin-top: 15px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
