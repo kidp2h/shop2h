@@ -40,4 +40,9 @@ export default new class UserController {
             return res.status(200).json({message : "success"});
         }
     }
+
+    getLogout(req : Request, res : Response){
+        req.logout();
+        res.redirect("/user");
+    }
 }
