@@ -80,7 +80,7 @@
         <section class="htc__contact__area ptb--120 bg__white">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 col-lg-6 col-sm-12 col-xs-12">
+                    <div class="col-lg-10 col-lg-6 col-sm-12 col-xs-12 htc__contact-settings">
                         <div class="htc__contact__container">
                             <div class="htc__contact__address">
                                 <h2 class="contact__title">Information</h2>
@@ -152,7 +152,7 @@
                                     </div>
                                     <div class="single-contact-form">
                                         <div class="contact-box message">
-                                            <textarea name="describe" id="describe" placeholder="Describe yourself"><%= user.describe %></textarea>
+                                            <textarea name="describe" id="describe" current-content="<%= user.describe %>" placeholder="Describe yourself"><%= user.describe %></textarea>
                                         </div>
                                     </div>
                                     <div class="contact-btn">

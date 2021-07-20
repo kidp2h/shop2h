@@ -426,7 +426,7 @@
 
     .main__menu {
         justify-content: flex-start;
-        height: 85px;
+        height: auto;
     }
 
     .slider__bg--1 {

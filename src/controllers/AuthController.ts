@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import axios from "axios"
 import UserModel from "../models/UserModel"
 import * as UserVerify from "../helpers/verify"
+import {IUser} from  "../types/User"
 
 
 export default new class AuthController {
@@ -32,9 +33,15 @@ export default new class AuthController {
             }else if(emailExist){
                 return res.status(401).json({ email:"email",message: "failed-register" });
             }else {
-                let user = await UserModel.createUser(data);
-                let result = await UserVerify.sendMailVerify(user._id, user.email, user.verify.tokenVerify)
-                console.log(result);
+                let account : Partial<IUser> = {
+                    local : {
+                        username : data.username,
+                        email : data.email,
+                        password : data.password,
+                    }
+                }
+                let user = await UserModel.createUser(account);
+                // let result = await UserVerify.sendMailVerify(user._id, user.email, user.verify.tokenVerify)
                 return res.status(200).json({message: "success" });
             }
         }else{
@@ -46,6 +53,11 @@ export default new class AuthController {
         if(req.user){
             return res.status(200).json({message : "success"});
         }
+    }
+
+    postLoginWithFacebook(req : Request, res : Response){
+        console.log("ok")
+        res.send("ok");
     }
     async getVerify(req: Request, res : Response){
         if(req.query.id && req.query.token){
