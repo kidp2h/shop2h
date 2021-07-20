@@ -4,7 +4,7 @@ import {UserController} from "../controllers/index"
 import {UserMiddleware} from "../middlewares/UserMiddleware"
 
 
-router.get("/settings",UserMiddleware.checkLogin,UserController.getSettings)
-router.post("/save",UserMiddleware.checkLogin,UserController.postSave);
+router.get("/settings",UserMiddleware.isLogin,UserController.getSettings)
+router.post("/save",UserMiddleware.isLogin,UserController.postSave);
 
 export default router;

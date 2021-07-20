@@ -17,6 +17,7 @@ export interface IUser extends Document {
     facebook? : {
         id : string, 
         email : string,
+        username : string,
     }
     
 }
@@ -27,6 +28,7 @@ export interface IUserModel extends Model<IUser> {
     findUserByUsername(username: IUser["local"]["username"]);
     findUserByEmail(email : IUser["local"]["email"]);
     findUserById(id : IUser["_id"] | string);
+    findUserByIdFacebook(id);
     updateVerifyUser(id : IUser["_id"] | string);
     updateInfo(id : IUser["_id"] | string, data : Object);
     //METHODS

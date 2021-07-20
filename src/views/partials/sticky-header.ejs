@@ -125,9 +125,16 @@
 						<li class="drop">
 							<a href="#"><span class="ti-user"></span></a>
 							<ul class="dropdown">
+								
 								<% if (user) { %>
 									<li>
-										<a href="/user/settings"><%=user.local.username%></a>
+										<a href="/user/settings">
+										<% if(typeof user.facebook.id == "undefined"){ %> 
+												<%= user.local.username %> 
+										<% }else{ %>
+											<%= user.facebook.username %> 
+										<% } %>  
+										</a>
 									</li>
 									<li>
 										<a href="/shop/cart">My Cart</a>
@@ -140,6 +147,7 @@
 										<a href="/auth">Login Or Register</a>
 									</li>
 								<% } %>
+								
 								
 							</ul>
 						</li>

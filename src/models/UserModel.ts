@@ -9,7 +9,7 @@ const UserSchema : Schema<IUser, IUserModel>  = new Schema<IUser>({
     address : String,
     describe : String,
     verify : {
-        isVerify : {type : Boolean, default : true},
+        isVerify : {type : Boolean, default : false},
         tokenVerify : {type : String, default : uuidv4()}
     },
     local : {
@@ -20,6 +20,7 @@ const UserSchema : Schema<IUser, IUserModel>  = new Schema<IUser>({
     facebook : {
         id : String, 
         email : String,
+        username: String
     }
     // cart : [/*IProduct*/],
 },{timestamps : true})
@@ -36,6 +37,9 @@ UserSchema.statics = {
     },
     async findUserById(id : IUser["_id"]){
         return await this.findOne({_id : id});
+    },
+    async findUserByIdFacebook(id){
+        return await this.findOne({"facebook.id" : id});
     },
     async updateVerifyUser(id : IUser["_id"]){
         return await this.updateOne({_id : id},{$set : {
