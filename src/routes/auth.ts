@@ -11,5 +11,7 @@ router.get("/verify",AuthController.getVerify);
 
 router.post("/register", AuthController.postRegister);
 router.post("/login", Passport.authenticate("local"), AuthController.postLogin);
+router.get("/login-with-facebook", Passport.authenticate("facebook"), AuthController.postLoginWithFacebook);
+router.get('/facebook/callback', Passport.authenticate('facebook', { successRedirect: '/',failureRedirect: '/auth' }));
 
 export default router;

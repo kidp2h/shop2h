@@ -89,8 +89,9 @@ $(function () {
 
     $(".btn-settings-save").on("click", (e) => {
         e.preventDefault();
-        let values = getValuesInForm(["#address", "#gender", "#describe"]);
-        if(values.length == 0){
+        let values = getValuesInForm(["#address", "#gender"]);
+        let describe = $("#describe").attr("current-content");
+        if(values.length == 0 && describe == $("#describe").val() ){
 
         }else{
             $.ajax({
@@ -98,7 +99,11 @@ $(function () {
                 url: "/user/save",
                 data: {address : $("#address").val(), gender : $("#gender").val(), describe : $("#describe").val()},
                 success: function (response) {
-                    
+                    if(response){
+                        sweet.fire("Notification", "Updated Successfully !!", "success")
+                    }else {
+                        sweet.fire("Notification", "Error :( , Please contact with admin to handle this error !!", "success")
+                    }
                 },
                 error : function (response) {
 

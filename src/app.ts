@@ -14,6 +14,7 @@ import Routers from "./routes/Routers"
 import Database from "./config/Database";
 // Authenticate
 import {InitializePassport} from "./auth/local"
+import {InitializePassportFacebook} from "./auth/facebook"
 //Middleware
 import {UserMiddleware} from "./middlewares/UserMiddleware"
 
@@ -52,6 +53,7 @@ class App {
         app.use(passport.session());
         // initialize passport
         InitializePassport();
+        InitializePassportFacebook();
         // middlwares app
         UserMiddleware.RenderDataUser(app);
         // initialize router

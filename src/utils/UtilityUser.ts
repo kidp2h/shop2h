@@ -1,8 +1,8 @@
-import UserModel from "../models/UserModel"
+import {UserModel} from "../models/index"
 import {IUser, IUserModel} from "../types/User"
 
 export namespace UserUtility {
-    export async function checkAccount(username : IUser["username"], password : IUser["password"]) : Promise<IUser|boolean>{
+    export async function checkAccount(username : IUser["local"]["username"], password : IUser["local"]["password"]) : Promise<IUser|boolean>{
         const user  = await UserModel.findUserByUsername(username);
         if(user){
             if(user.comparePassword(password)){

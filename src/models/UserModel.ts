@@ -5,34 +5,22 @@ import {v4 as uuidv4} from "uuid"
 import  {IUser, IUserModel} from "../types/User";
 
 const UserSchema : Schema<IUser, IUserModel>  = new Schema<IUser>({
-    username : {
-        type : String, 
-        trim:true
-    },
-    email :{
-        type : String,
-        trim: true
-    },
-    password : {
-        type : String,
-        trim : true
-    },
-    gender : {
-        type : String, 
-        default : "male"
-    },
+    gender : String,
     address : String,
     describe : String,
     verify : {
-        isVerify : {type : Boolean, default : false},
+        isVerify : {type : Boolean, default : true},
         tokenVerify : {type : String, default : uuidv4()}
     },
-    
-    // ,
-    // facebook : {
-    //     id : {type : String, default : null},
-    //     email : {type : String, default : null}
-    // }
+    local : {
+        username : String,
+        email : String,
+        password : String,
+    },
+    facebook : {
+        id : String, 
+        email : String,
+    }
     // cart : [/*IProduct*/],
 },{timestamps : true})
 
@@ -40,11 +28,11 @@ UserSchema.statics = {
     async createUser(data : IUser){
         return await this.create(data);
     },
-    async findUserByUsername(username : IUser["username"]){
-        return await this.findOne({ username : username})   
+    async findUserByUsername(username : IUser["local"]["username"]){
+        return await this.findOne({"local.username" : username})   
     },
-    async findUserByEmail(email : IUser["email"]){
-        return await this.findOne({ email : email})   
+    async findUserByEmail(email : IUser["local"]["username"]){
+        return await this.findOne({"local.email" : email})   
     },
     async findUserById(id : IUser["_id"]){
         return await this.findOne({_id : id});
@@ -59,16 +47,16 @@ UserSchema.statics = {
     }
 }
 UserSchema.methods = {
-    comparePassword(userPwd : IUser["password"]) : boolean {
-        return bcrypt.compareSync(<string>userPwd, <string>this.password);
+    comparePassword(userPwd : IUser["local"]["password"]) : boolean {
+        return bcrypt.compareSync(<string>userPwd, <string>this.local.password);
     }
 }
 
 UserSchema.pre("save",function(this : IUser,next) {
-    if(!this.isModified('password')){
+    if(!this.isModified('local.password')){
         return next();
     }else{
-        this.password = bcrypt.hashSync(this.password, Number(process.env.SALT_HASH));
+        this.local.password = bcrypt.hashSync(this.local.password, Number(process.env.SALT_HASH));
         return next();
     }
 })
