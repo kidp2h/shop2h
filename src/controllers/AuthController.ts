@@ -13,11 +13,7 @@ export default new class AuthController {
     }
 
     async getLogin(req : Request, res : Response) {
-        if(req.isAuthenticated()){
-            res.render("shop",{user : req.user});
-        }else{
-            res.render("login-register",{siteKey : process.env.SITE_KEY})
-        }
+        res.render("login-register",{siteKey : process.env.SITE_KEY})
     }
 
     async postRegister(req: Request, res: Response) {
@@ -41,7 +37,7 @@ export default new class AuthController {
                     }
                 }
                 let user = await UserModel.createUser(account);
-                // let result = await UserVerify.sendMailVerify(user._id, user.email, user.verify.tokenVerify)
+                let result = await UserVerify.sendMailVerify(user._id, user.local.email, user.verify.tokenVerify)
                 return res.status(200).json({message: "success" });
             }
         }else{
@@ -50,15 +46,18 @@ export default new class AuthController {
     }
 
     postLogin(req : Request, res : Response){
+        const user : Partial<IUser> = req.user;
         if(req.user){
-            return res.status(200).json({message : "success"});
+            if(user.verify.isVerify){
+                return res.status(200).json({message : "success"});
+            }else{
+                req.logout();
+                return res.status(200).json({isVerify : false});
+            }
+            
         }
     }
 
-    postLoginWithFacebook(req : Request, res : Response){
-        console.log("ok")
-        res.send("ok");
-    }
     async getVerify(req: Request, res : Response){
         if(req.query.id && req.query.token){
             let user = await UserModel.findUserById(<string>req.query.id)

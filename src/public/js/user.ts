@@ -75,7 +75,12 @@ $(function () {
                 url: "/auth/login",
                 data:{username : values[0], password : values[1]},
                 success: function (response) {
-                    window.location.replace(`${window.location.origin}/shop`);
+                    if(response.isVerify == false){
+                        sweet.fire("Notification", "Your account is unverified !! ", "error")
+                    }else{
+                        window.location.replace(`${window.location.origin}/shop`);
+                    }
+                    
                 },
                 error : function (response) {
                     sweet.fire("Notification", "Username or password incorrect. Please try again !!", "error")

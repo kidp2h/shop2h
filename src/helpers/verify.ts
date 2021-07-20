@@ -9,8 +9,8 @@ dotenv.config();
 const transporter: Transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-        user: "thjnhsoajca@gmail.com",
-        pass: "Sliverdz2604"
+        user: process.env.USER,
+        pass:  process.env.PASS
     }
 })
 
@@ -21,6 +21,7 @@ function templateMail(id, tokenVerify) {
 }
 
 export async function sendMailVerify(id, email, tokenVerify) {
+    console.log(tokenVerify);
     await transporter.sendMail({
         from: process.env.USER,
         to: email,

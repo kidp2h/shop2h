@@ -12,11 +12,19 @@ export namespace UserMiddleware {
         })
     }
 
-    export const checkLogin = (req : Request, res : Response, next : NextFunction) => {
+    export const isLogin = (req : Request, res : Response, next : NextFunction) => {
         if(req.isAuthenticated()){ 
             next();
         }else{
             res.redirect("/auth");
+        }
+    }   
+
+    export const yetLogin = (req : Request, res : Response, next : NextFunction) => {
+        if(!req.isAuthenticated()){ 
+            next();
+        }else{
+            res.redirect("/shop");
         }
     }   
         
