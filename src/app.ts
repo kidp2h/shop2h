@@ -56,6 +56,7 @@ class App {
         UserMiddleware.RenderDataUser(app);
         // initialize router
         app.use("/", Routers.IndexRouter);
+        app.use("/auth", Routers.AuthRouter);
         app.use("/user", Routers.UserRouter);
         app.use("/shop", Routers.ShopRouter);
     }

@@ -1,14 +1,10 @@
-import express, { Router, Request, Response } from "express"
-import dotenv from "dotenv"; dotenv.config();
-import { UserController } from "../controllers/index"
-import Passport from "passport"
+import express, {Router} from "express"
+const router : Router = express.Router();
+import {UserController} from "../controllers/index"
+import {UserMiddleware} from "../middlewares/UserMiddleware"
 
-const router: Router = express.Router();
 
-router.get("/", UserController.getLogin);
-router.get("/logout", UserController.getLogout);
-
-router.post("/register", UserController.postRegister);
-router.post("/login", Passport.authenticate("local"),UserController.postLogin);
+router.get("/settings",UserMiddleware.checkLogin,UserController.getSettings)
+router.post("/save",UserMiddleware.checkLogin,UserController.postSave);
 
 export default router;

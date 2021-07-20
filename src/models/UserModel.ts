@@ -1,6 +1,7 @@
 import Mongoose, {Schema} from "mongoose"
 import dotenv from "dotenv";dotenv.config();
-import bcrypt from "bcrypt"
+import bcrypt from "bcrypt";
+import {v4 as uuidv4} from "uuid"
 import  {IUser, IUserModel} from "../types/User";
 
 const UserSchema : Schema<IUser, IUserModel>  = new Schema<IUser>({
@@ -8,17 +9,31 @@ const UserSchema : Schema<IUser, IUserModel>  = new Schema<IUser>({
         type : String, 
         trim:true
     },
-    password : {
-        type : String, 
+    email :{
+        type : String,
+        trim: true
     },
-    email : {
+    password : {
         type : String,
         trim : true
     },
     gender : {
         type : String, 
         default : "male"
-    }
+    },
+    address : String,
+    describe : String,
+    verify : {
+        isVerify : {type : Boolean, default : false},
+        tokenVerify : {type : String, default : uuidv4()}
+    },
+    
+    // ,
+    // facebook : {
+    //     id : {type : String, default : null},
+    //     email : {type : String, default : null}
+    // }
+    // cart : [/*IProduct*/],
 },{timestamps : true})
 
 UserSchema.statics = {
@@ -33,6 +48,14 @@ UserSchema.statics = {
     },
     async findUserById(id : IUser["_id"]){
         return await this.findOne({_id : id});
+    },
+    async updateVerifyUser(id : IUser["_id"]){
+        return await this.updateOne({_id : id},{$set : {
+            "verify.isVerify":true
+        }})
+    },
+    async updateInfo(id : IUser["_id"], data){
+        return await this.updateOne({_id : id},data)
     }
 }
 UserSchema.methods = {
@@ -42,11 +65,9 @@ UserSchema.methods = {
 }
 
 UserSchema.pre("save",function(this : IUser,next) {
-    console.log(this.validateSync());
     if(!this.isModified('password')){
         return next();
     }else{
-        console.log()
         this.password = bcrypt.hashSync(this.password, Number(process.env.SALT_HASH));
         return next();
     }
