@@ -20,7 +20,7 @@ export const InitializePassport = () : void => {
     })
 
     Passport.deserializeUser(async (id : IUser["_id"], done) => {
-        const user = await UserModel.findUserById(id);
+        const user : IUser = await UserModel.findUserById(id);
         if(user){
             return done(null,user);
         }else{

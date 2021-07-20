@@ -1,5 +1,6 @@
 import sweet from "sweetalert2";
 import _ from "lodash";
+import { ajax } from "jquery";
 
 $(function () {
     
@@ -34,7 +35,7 @@ $(function () {
                 $(".validate-text").css("visibility", "hidden");
                 $.ajax({
                     type: "POST",
-                    url: "/user/register",
+                    url: "/auth/register",
                     data: { username: values[0], email: values[1], password: values[2], captcha: responseCaptcha },
                     success: function (response) {
                         //reset box captcha register
@@ -71,7 +72,7 @@ $(function () {
             $(".validate-text").css("visibility", "hidden")
             $.ajax({
                 type: "POST",
-                url: "/user/login",
+                url: "/auth/login",
                 data:{username : values[0], password : values[1]},
                 success: function (response) {
                     window.location.replace(`${window.location.origin}/shop`);
@@ -86,4 +87,23 @@ $(function () {
 
     })
 
+    $(".btn-settings-save").on("click", (e) => {
+        e.preventDefault();
+        let values = getValuesInForm(["#address", "#gender", "#describe"]);
+        if(values.length == 0){
+
+        }else{
+            $.ajax({
+                type: "POST",
+                url: "/user/save",
+                data: {address : $("#address").val(), gender : $("#gender").val(), describe : $("#describe").val()},
+                success: function (response) {
+                    
+                },
+                error : function (response) {
+
+                }
+            });
+        }
+    })
 })

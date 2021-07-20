@@ -1,39 +1,38 @@
 /*-----------------------------------------------------------------------------------
 
-  Template Name: Tmart-Minimalist eCommerce HTML5 Template.
-  Template URI: #
-  Description: Tmart is a unique website template designed in HTML with a simple & beautiful look. There is an excellent solution for creating clean, wonderful and trending material design corporate, corporate any other purposes websites.
-  Author: Theme365
-  Version: 1.0
+    Template Name: Tmart-Minimalist eCommerce HTML5 Template.
+    Template URI: #
+    Description: Tmart is a unique website template designed in HTML with a simple & beautiful look. There is an excellent solution for creating clean, wonderful and trending material design corporate, corporate any other purposes websites.
+    Author: Theme365
+    Version: 1.0
 
 -----------------------------------------------------------------------------------*/
 
 /*-------------------------------
 [  Table of contents  ]
 ---------------------------------
-  01. jQuery MeanMenu
-  02. wow js active
-  03. Portfolio  Masonry (width)
-  04. Sticky Header
-  05. ScrollUp
-  06. Tooltip
-  07. ScrollReveal Js Init
-  08. Fixed Footer bottom script ( Newsletter )
-  09. Search Bar
-  10. Toogle Menu
-  11. Shopping Cart Area
-  12. Filter Area
-  13. User Menu
-  14. Overlay Close
-  15. Home Slider 
-  16. Popular Product Wrap
-  17. Testimonial Wrap
-  18. Magnific Popup  
-  19. Price Slider Active
-  20.  Plus Minus Button
-  21. jQuery scroll Nav
+    01. jQuery MeanMenu
+    02. wow js active
+    03. Portfolio  Masonry (width)
+    04. Sticky Header
+    05. ScrollUp
+    06. Tooltip
+    07. ScrollReveal Js Init
+    08. Fixed Footer bottom script ( Newsletter )
+    09. Search Bar
+    10. Toogle Menu
+    11. Shopping Cart Area
+    12. Filter Area
+    13. User Menu
+    14. Overlay Close
+    15. Home Slider 
+    16. Popular Product Wrap
+    17. Testimonial Wrap
+    18. Magnific Popup  
+    19. Price Slider Active
+    20.  Plus Minus Button
+    21. jQuery scroll Nav
 
-  
 
 /*--------------------------------
 [ End table content ]

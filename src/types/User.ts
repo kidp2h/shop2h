@@ -9,11 +9,15 @@ export interface IUser extends Document {
 }
 
 export interface IUserModel extends Model<IUser> {
+    //STATIC
     createUser(data : IUser);
     findUserByUsername(username: IUser["username"]);
     findUserByEmail(email : IUser["email"]);
+    findUserById(id : IUser["_id"] | string);
+    updateVerifyUser(id : IUser["_id"] | string);
+    updateInfo(id : IUser["_id"] | string, data : Object);
+    //METHODS
     comparePassword(userPwd: IUser["password"]);
-    findUserById(id : IUser["id"]);
     
 }
 

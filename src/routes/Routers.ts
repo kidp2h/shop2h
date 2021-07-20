@@ -1,5 +1,6 @@
 import IndexRouter from "./index"
-import UserRouter from "./user"
+import AuthRouter from "./auth"
 import ShopRouter from "./shop"
+import UserRouter from "./user";
 
-export default {IndexRouter, UserRouter, ShopRouter} 
+export default {IndexRouter, AuthRouter, ShopRouter, UserRouter} 

@@ -43,7 +43,7 @@ input[type=checkbox] {
   visibility: hidden;
   transition: 1s linear;
 }
-input {
+.login input {
   margin: 15px;
 }
 #register {
@@ -76,4 +76,25 @@ div#captcha-login {
   margin-top: 15px;
   text-transform: capitalize;
   font-weight: 500;
+}
+.contact__title{
+  text-align: center;
+}
+.single__contact__address {
+  max-width: 500px;
+  min-width: 250px;
+}
+
+select#gender {
+  outline: none;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  /* opacity: 1; */
+}
+.input-disabled{
+  cursor: not-allowed !important;
+}
+select#gender {
+  color: #6f6f6f;
 }

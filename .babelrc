@@ -10,6 +10,7 @@
         "helpers": true,
         "regenerator": true
       }
-    ]
+    ],
+    "@babel/plugin-transform-template-literals"
   ]
 }
