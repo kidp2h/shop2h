@@ -39,7 +39,11 @@
 -----------------------------------*/
 
 (function ($) {
+
+
     'use strict';
+
+    $(".lds-ring").hide()
     /*-------------------------------------------
         01. jQuery MeanMenu
     --------------------------------------------- */
@@ -64,21 +68,33 @@
         // filter items on button click
         $('.product__menu').on('click', 'button', function () {
             var filterValue = $(this).attr('data-filter');
-            $grid.isotope({
+            $('.product__list').isotope({
+                filter: filterValue
+            });
+        });
+        $('.filter--type').on('click', 'a', function () {
+            var filterValue = $(this).attr('data-filter');
+            $('.product__list').isotope({
+                filter: filterValue
+            });
+        });
+
+        $('.filter--color').on('click', 'a', function () {
+            var filterValue = $(this).attr('data-filter');
+            $('.product__list').isotope({
+                filter: filterValue
+            });
+        });
+
+        $('.filter--size').on('click', 'a', function () {
+            var filterValue = $(this).attr('data-filter');
+            $('.product__list').isotope({
                 filter: filterValue
             });
         });
         // init Isotope
-        var $grid = $('.product__list').isotope({
-            itemSelector: '.single__pro',
-            percentPosition: true,
-            transitionDuration: '0.7s',
-            masonry: {
-                // use outer width of grid-sizer for columnWidth
-                columnWidth: '.single__pro',
-            }
-        });
-
+        var $grid = $('.product__list')
+        
     });
 
     $('.product__menu button').on('click', function (event) {
@@ -86,7 +102,6 @@
         $(this).addClass('is-checked');
         event.preventDefault();
     });
-
 
 
     /*-------------------------------------------
@@ -102,7 +117,6 @@
             sticky_id.addClass("scroll-header");
         }
     });
-
 
     /*--------------------------
         05. ScrollUp
@@ -130,7 +144,7 @@
     -------------------------------------- */
     window.sr = ScrollReveal({
         duration: 800,
-        reset: true
+        reset: false
     });
     sr.reveal('.foo');
     sr.reveal('.bar');

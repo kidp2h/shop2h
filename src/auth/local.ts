@@ -27,8 +27,6 @@ export const InitializePassport = () : void => {
             return done(null,false);
         }
     })
-
-
 }
 
 

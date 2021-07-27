@@ -1103,7 +1103,19 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/jquery@^3.5.6":
+"@types/isotope-layout@^3.0.9":
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/@types/isotope-layout/-/isotope-layout-3.0.9.tgz#be66995aaf51917574093fa7964d00ebd76bc401"
+  integrity sha512-tLvSxfQu10f0M0YFIODdqtFz2Gr3NgEhkH6wTY4Gda9fPtLG4/60GWphHZj4PuxuGTjzaF4MMUog+a347gzzTw==
+
+"@types/jquery-toast-plugin@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@types/jquery-toast-plugin/-/jquery-toast-plugin-1.3.3.tgz#e3b9e0b024d2caf15377d2952ef44269c67e30eb"
+  integrity sha512-4DXpQnga0dQu1cyKChvAq6+4HzXS5YaeOna3BIknl+w1aaC2q9btf9lMlehI+03A5H1CHbZ5/PHSqLyObXztDQ==
+  dependencies:
+    "@types/jquery" "*"
+
+"@types/jquery@*", "@types/jquery@^3.5.6":
   version "3.5.6"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.6.tgz#97ac8e36dccd8ad8ed3f3f3b48933614d9fd8cf0"
   integrity sha512-SmgCQRzGPId4MZQKDj9Hqc6kSXFNWZFHpELkyK8AQhf8Zr6HKfCzFv9ZC1Fv3FyQttJZOlap3qYb12h61iZAIg==
@@ -3111,6 +3123,16 @@ jest-worker@^27.0.2:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
+jquery-toast-plugin@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/jquery-toast-plugin/-/jquery-toast-plugin-1.3.2.tgz#9bef5a7d7590403e0d56b1d73a05b9842d67fa05"
+  integrity sha512-0j/nfqA2FHFuJXp8QL33EVVCY//TDVfq4LULhTbasZYl2aZlX6YiSF5IGrI31dQiS9S4JkXBUfX3rMJcfl/u/g==
+
+jquery@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
+  integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
+
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -4652,10 +4674,10 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-toastify-js@^1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/toastify-js/-/toastify-js-1.11.0.tgz#00d5a592a59789c8f0856f74935c31f282b77c66"
-  integrity sha512-N9o4RHy+IxY51C0wO50uJmXDpGHKKf6wRq2q0pfHlpMxRLKreD68L6ZR5BEETd5UCHWcwZa4sLNMV8iO5L+zqQ==
+toastify-js@^1.11.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/toastify-js/-/toastify-js-1.11.1.tgz#023a4ce64ecdead1d6d170072b62bd345088c427"
+  integrity sha512-O1UR06KEhFY9Vu2iKltgOE62+Vq/5iU7AOktouFkEegEisrqtNhEri9RpSd6u6wyPsd4Ae9RT1io3uwkMAlLVQ==
 
 toidentifier@1.0.0:
   version "1.0.0"

@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import axios from "axios"
-import UserModel from "../models/UserModel"
+import {UserModel} from "../models"
 import * as UserVerify from "../helpers/verify"
 import {IUser} from  "../types/User"
 
