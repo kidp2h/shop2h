@@ -9,7 +9,7 @@ export default class ConnectDatabase {
 
     async Connect(){
         try {
-            await mongoose.connect(process.env.DB_URI,{useNewUrlParser : true,useUnifiedTopology:true,useFindAndModify: true});
+            await mongoose.connect(process.env.DB_URI,{useNewUrlParser : true,useUnifiedTopology:true,useFindAndModify: false});
         } catch (error) {
             throw new Error(error);
         }

@@ -2084,6 +2084,16 @@ product__style--7
 .sidebar__list li.orange i {
     color: #ffba00;
 }
+
+.sidebar__list li.green i {
+    color: green;
+}
+.sidebar__list li.grey i {
+    color: grey;
+}
+.sidebar__list li.purple i {
+    color: purple;
+}
 .htc__tags {
     display: flex;
     flex-flow: row wrap;

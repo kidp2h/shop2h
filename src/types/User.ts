@@ -1,7 +1,7 @@
 import { Types, Document, Model } from "mongoose"
-
+import { ICart } from "./Cart"
 export interface IUser extends Document {
-    _id?: Types.ObjectId,
+    _id : String | Types.ObjectId
     gender?: string
     address? : string,
     describe? : string,
@@ -18,7 +18,8 @@ export interface IUser extends Document {
         id : string, 
         email : string,
         username : string,
-    }
+    },
+    cart : String | ICart
     
 }
 
@@ -27,10 +28,10 @@ export interface IUserModel extends Model<IUser> {
     createUser(data : Partial<IUser>);
     findUserByUsername(username: IUser["local"]["username"]);
     findUserByEmail(email : IUser["local"]["email"]);
-    findUserById(id : IUser["_id"] | string);
+    findUserById(id : IUser["_id"]);
     findUserByIdFacebook(id);
-    updateVerifyUser(id : IUser["_id"] | string);
-    updateInfo(id : IUser["_id"] | string, data : Object);
+    updateVerifyUser(id : IUser["_id"]);
+    updateInfo(id : IUser["_id"], data : Object);
     //METHODS
     comparePassword(userPwd: IUser["local"]["password"]);
     

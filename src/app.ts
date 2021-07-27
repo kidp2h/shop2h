@@ -61,6 +61,7 @@ class App {
         app.use("/auth", Routers.AuthRouter);
         app.use("/user", Routers.UserRouter);
         app.use("/shop", Routers.ShopRouter);
+        app.use("/cart", Routers.CartRouter);
     }
 }
 

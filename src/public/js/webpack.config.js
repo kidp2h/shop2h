@@ -1,7 +1,7 @@
 const path = require("path");
 const Dotenv = require('dotenv-webpack');
 module.exports = {
-    entry: {user:"./src/public/js/user.ts"},
+    entry: {user:"./src/public/js/user.ts",shop:"./src/public/js/shop.ts"},
     output: { path: path.join(__dirname, "../../../dist/public/js"), filename: "[name].js" },
     mode: 'development',
         resolve: {
