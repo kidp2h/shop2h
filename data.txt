@@ -1,0 +1,125 @@
+[
+    {
+        "_id": "6101184b57a1641ae8a3fb2f",
+        "items": [
+            {
+                "quantity": 2,
+                "product": {
+                    "_id": "610117d857a1641ae8a3fab8",
+                    "size": [
+                        "m",
+                        "s",
+                        "l",
+                        "x",
+                        "xl",
+                        "xxl"
+                    ],
+                    "color": [
+                        "black",
+                        "red",
+                        "purple",
+                        "grey",
+                        "green",
+                        "blue"
+                    ],
+                    "name": "Product 8556",
+                    "image": "/images/product/product-270x270-8556.jpg",
+                    "category": [
+                        {
+                            "_id": "60fe546bc86b3b3ed078df87",
+                            "name": "Accessories",
+                            "createdAt": "2021-07-26T06:21:31.186Z",
+                            "updatedAt": "2021-07-26T06:21:31.186Z",
+                            "__v": 0
+                        }
+                    ],
+                    "price": 3512464,
+                    "sale": 2228581,
+                    "purchases": 7649,
+                    "createdAt": "2021-07-28T08:39:52.810Z",
+                    "updatedAt": "2021-07-28T08:39:52.810Z",
+                    "__v": 0
+                }
+            },
+            {
+                "quantity": 1,
+                "product": {
+                    "_id": "610117d957a1641ae8a3faba",
+                    "size": [
+                        "m",
+                        "s",
+                        "l",
+                        "x",
+                        "xl",
+                        "xxl"
+                    ],
+                    "color": [
+                        "black",
+                        "red",
+                        "purple",
+                        "grey",
+                        "green",
+                        "blue"
+                    ],
+                    "name": "Product 2897",
+                    "image": "/images/product/product-270x270-2897.jpg",
+                    "category": [
+                        {
+                            "_id": "60fe546bc86b3b3ed078df82",
+                            "name": "Books",
+                            "createdAt": "2021-07-26T06:21:31.181Z",
+                            "updatedAt": "2021-07-26T06:21:31.181Z",
+                            "__v": 0
+                        }
+                    ],
+                    "price": 2624319,
+                    "sale": 1174907,
+                    "purchases": 9553,
+                    "createdAt": "2021-07-28T08:39:53.906Z",
+                    "updatedAt": "2021-07-28T08:39:53.906Z",
+                    "__v": 0
+                }
+            },
+            {
+                "quantity": 1,
+                "product": {
+                    "_id": "610117db57a1641ae8a3fabc",
+                    "size": [
+                        "m",
+                        "s",
+                        "l",
+                        "x",
+                        "xl",
+                        "xxl"
+                    ],
+                    "color": [
+                        "black",
+                        "red",
+                        "purple",
+                        "grey",
+                        "green",
+                        "blue"
+                    ],
+                    "name": "Product 1062",
+                    "image": "/images/product/product-270x270-1062.jpg",
+                    "category": [
+                        {
+                            "_id": "60fe546bc86b3b3ed078df84",
+                            "name": "Furniture",
+                            "createdAt": "2021-07-26T06:21:31.186Z",
+                            "updatedAt": "2021-07-26T06:21:31.186Z",
+                            "__v": 0
+                        }
+                    ],
+                    "price": 4081015,
+                    "sale": 1609889,
+                    "purchases": 6653,
+                    "createdAt": "2021-07-28T08:39:55.249Z",
+                    "updatedAt": "2021-07-28T08:39:55.249Z",
+                    "__v": 0
+                }
+            }
+        ],
+        "summary": 7241958
+    }
+]

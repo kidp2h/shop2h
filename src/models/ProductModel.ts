@@ -6,7 +6,7 @@ const ProductSchema : Schema<IProduct, IProductModel> = new Schema({
     name : String,
     image : String,
     category : {
-        type : String,
+        type : Mongoose.Schema.Types.ObjectId,
         ref : "categories"
     },
     size : [String],

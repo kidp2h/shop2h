@@ -1,5 +1,7 @@
-import Mongoose, {Schema} from "mongoose"
+import Mongoose, {Schema, Types} from "mongoose"
 import {ICart, ICartModel} from "../types/Cart"
+import fs from "fs"
+import util from "util"
 
 
 const CartSchema : Schema<ICart, ICartModel> = new Schema({
@@ -9,7 +11,7 @@ const CartSchema : Schema<ICart, ICartModel> = new Schema({
     },
     items : [{
         product : {
-            type : String,
+            type : Mongoose.Schema.Types.ObjectId,
             ref : "products"
         },
         quantity : {
@@ -25,10 +27,49 @@ CartSchema.statics = {
         return this.create({userId : userId})
     },
     getCartByUserId(userId){
-        return this.findOne({userId : userId}).populate("items.product")
+        let cart = this.aggregate([
+            {$lookup : {
+                from : "users",
+                localField : "userId",
+                foreignField : "_id",
+                as : "_user"
+            }},
+            {$unwind : {
+                path : "$_user",
+                preserveNullAndEmptyArrays: true
+            }},
+            {$unwind : {path : "$items"}},
+            {$lookup :{
+                from : "products",
+                localField : "items.product",
+                foreignField : "_id",
+                as : "items.product"
+            }},
+            {$unwind : {path : "$items.product"}},
+            {$lookup : {
+                from : "categories",
+                localField : "items.product.category",
+                foreignField : "_id",
+                as : "items.product.category"
+            }},
+            {$addFields : {summary : {$sum : {$multiply : ["$items.quantity","$items.product.sale"]}}}},
+            {$group : {
+                _id : "$_id",
+                items : {
+                    $push : {
+                        quantity : "$items.quantity",
+                        product : "$items.product"
+                    }
+                },
+                summary : {
+                    $sum : "$summary"
+                }
+            }}
+        ])
+        return cart;
     },
     addItemToCart(userId,productId : string){
-        return this.updateOne({userId : userId},{$push : {"items":{product : productId}}})
+        return this.updateOne({userId : userId},{$push : {"items":{product : Mongoose.Types.ObjectId(productId)}}})
     },
     updateCart(userId, productId){
         return this.updateOne({userId : userId,"items.product":productId},{$inc :{"items.$.quantity" : 1}})

@@ -1,9 +1,9 @@
-import {Document, Types, Model} from "mongoose"
+import {Document, ObjectId, Model} from "mongoose"
 
 export interface IProduct extends Document {
     name : string,
     image : string,
-    category : string,
+    category : ObjectId,
     size : string,
     color : string,
     price : number,

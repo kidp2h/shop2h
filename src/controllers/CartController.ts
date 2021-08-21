@@ -1,13 +1,12 @@
-import e, {Response, Request} from "express"
+import {Response, Request} from "express"
 import { CartModel } from "../models"
 
 export default new class CartController {
     async postAddItem(req : Request, res : Response){
         if(req.user._id){
             let productId = req.body.productId;
-            let cart = await CartModel.getCartByUserId(req.user._id);
-            console.log(cart.items);
-            let found = cart.items.find(item => item.product._id == productId);
+            let cart = (await CartModel.getCartByUserId(req.user._id))[0];
+            let found = cart.items.some(item => item.product._id == productId);
             if(found){
                 await CartModel.updateCart(req.user._id,productId);
             }else{

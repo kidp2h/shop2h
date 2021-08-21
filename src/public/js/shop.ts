@@ -11,28 +11,71 @@ $(function(){
     }
 
     $(".product__action").on("click",".addItemToCart",function(e){
+        let found = false;
         e.preventDefault();
         let productId = $(this).parents(".product__action").attr("data-id-product")
-        console.log(productId);
-        $.ajax({
-            type: "POST",
-            url: `/cart/addItem`,
-            data : {productId : productId},
-            success: function (response) {
-                toast({
-                    text: "Added to cart !!",
-                    duration: 2500,
-                    close: true,
-                    gravity: "bottom", // `top` or `bottom`
-                    position: "right", // `left`, `center` or `right`
-                    backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-                    stopOnFocus: true
-                }).showToast();
-            },
-            error : function(response){
-                window.location.replace(`${window.location.origin}/auth`);
-            }
-        });
+        let productImage = $(this).parents(".product__inner").find(".image__product").attr("src");
+        let productPrice = $(this).parents(".product").find(".new__price").text();
+        let productName = $(this).parents(".product").find(".product__name").text();
+        console.log(productImage,productPrice)
+        let item = `
+            <div class="shp__single__product" data-id-product="${productId}">
+                <div class="shp__pro__thumb">
+                    <a href="javascript:void(0)"><img src="${productImage}" alt="product images"></a>
+                </div>
+                <div class="shp__pro__details">
+                    <h2><a href="/product/detail">${productName}</a></h2>
+                    <span class="quantity">QTY: 1</span>
+                    <span class="shp__price">${productPrice} </span>
+                </div>
+                <div class="remove__btn">
+                    <a href="javascript:void(0)" class="btn__remove" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                </div>
+            </div>
+        `
+        $(".shp__single__product").each(function(){
+            if(productId == $(this).attr("data-id-product")){
+                let currentQTY = $(this).children(".shp__pro__details").children(".quantity").text().match(/[0-9]+/g);
+                $(this).children(".shp__pro__details").children(".quantity").text(`QTY : ${Number(currentQTY[0]) + 1}`);
+                found = true;
+                return false; // break
+            } 
+        })
+        if(found == false){
+            $(".cart__product").append(item)
+        }
+        let newTotal = convertCurrencyToNumber($(".total__price").text()) + convertCurrencyToNumber(productPrice)
+        $(".total__price").text(formatCurrency(newTotal));
+        
+        // $.ajax({
+        //     type: "POST",
+        //     url: `/cart/addItem`,
+        //     data : {productId : productId},
+        //     success: function (response) {
+        //         toast({
+        //             text: "Added to cart !!",
+        //             duration: 2500,
+        //             close: true,
+        //             gravity: "bottom", // `top` or `bottom`
+        //             position: "right", // `left`, `center` or `right`
+        //             backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        //             stopOnFocus: true
+        //         }).showToast();
+        //     },
+        //     error : function(response){
+        //         window.location.replace(`${window.location.origin}/auth`);
+        //     }
+        // });
+    })
+
+    $(".shopping__cart").on("click",".btn__remove", function(e){
+        e.preventDefault();
+        let QTY = $(this).parents(".shp__single__product").children(".shp__pro__details").children(".quantity").text().match(/[0-9]+/g);
+        let price = $(this).parents(".shp__single__product").children(".shp__pro__details").children(".shp__price").text();
+        let totalPrice = Number(QTY) * convertCurrencyToNumber(price);
+        let newTotal = convertCurrencyToNumber($(".total__price").text()) - totalPrice;
+        $(".total__price").text(formatCurrency(newTotal));
+        $(this).parents(".shp__single__product").remove();
     })
 })
 // $(function(){

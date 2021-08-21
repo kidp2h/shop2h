@@ -1,5 +1,6 @@
 import express from "express"
 const router : express.Router = express.Router();
+import Mongoose from "mongoose"
 
 import {UserModel,CategoryModel, ProductModel, CartModel} from "../models"
 
@@ -27,23 +28,21 @@ router.get("/blog",(req : express.Request, res : express.Response) : void => {
 })
 
 
-// router.get("/test",async (req : express.Request, res : express.Response)  => {
-//     //console.log(await UserModel.findUserById("60fe39814e555e37e8bad40d"))
-//     // await UserModel.updatePassword("60fe39814e555e37e8bad40d", "1234");
-//     let data = {
-//         name : req.query.nameP,
-//         image : `/images/product/${req.query.name}`,
-//         category : req.query.category,
-//         color : ["black","red","purple","grey","green","blue"],
-//         size : ["m","s","l","x","xl","xxl"],
-//         price : Math.floor(Math.random() * 5000000) + 1000000,
-//         sale :  Math.floor(Math.random() * 2000000) + 1000000,
-//         purchases : Math.floor(Math.random() * 10000) + 5000
-//     };
-//     await ProductModel.createNewProduct(data);
-//     res.status(200).json({mes : "200"});
+router.get("/test",async (req : express.Request, res : express.Response)  => {
+    let data = {
+        name : req.query.nameP,
+        image : `/images/product/${req.query.name}`,
+        category : Mongoose.Types.ObjectId(<string>req.query.category),
+        color : ["black","red","purple","grey","green","blue"],
+        size : ["m","s","l","x","xl","xxl"],
+        price : Math.floor(Math.random() * 5000000) + 1000000,
+        sale :  Math.floor(Math.random() * 2000000) + 1000000,
+        purchases : Math.floor(Math.random() * 10000) + 5000
+    };
+    await ProductModel.createNewProduct(data);
+    res.status(200).json({mes : "200"});
     
-// })
+})
 // router.get("/test2",async (req : express.Request, res : express.Response)  => {
 //     let cat = ["Books","Furniture", "Decorations","Bags","Accessories"]
 //     for (const ele of cat) {

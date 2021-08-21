@@ -77,41 +77,36 @@
         <div class="offsetmenu__close__btn">
             <a href="javascript:void(0)"><i class="zmdi zmdi-close"></i></a>
         </div>
-        <div class="shp__cart__wrap">
-            <div class="shp__single__product">
-                <div class="shp__pro__thumb">
-                    <a href="javascript:void(0)">
-                        <img src="/images/product/sm-img/1.jpg" alt="product images">
-                    </a>
-                </div>
-                <div class="shp__pro__details">
-                    <h2><a href="/product/detail">BO&Play Wireless Speaker</a></h2>
-                    <span class="quantity">QTY: 1</span>
-                    <span class="shp__price">$105.00</span>
-                </div>
-                <div class="remove__btn">
-                    <a href="javascript:void(0)" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                </div>
-            </div>
-            <div class="shp__single__product">
-                <div class="shp__pro__thumb">
-                    <a href="javascript:void(0)">
-                        <img src="/images/product/sm-img/2.jpg" alt="product images">
-                    </a>
-                </div>
-                <div class="shp__pro__details">
-                    <h2><a href="/product/detail">Brone Candle</a></h2>
-                    <span class="quantity">QTY: 1</span>
-                    <span class="shp__price">$25.00</span>
-                </div>
-                <div class="remove__btn">
-                    <a href="javascript:void(0)" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                </div>
-            </div>
+        <div class="shp__cart__wrap cart__product">
+            <% if (cart) { %>
+                <% cart.items.forEach(item => { %>
+                    <div class="shp__single__product" data-id-product="<%= item.product._id %>">
+                        <div class="shp__pro__thumb">
+                            <a href="javascript:void(0)">
+                                <img src="<%= item.product.image %> " alt="product images">
+                            </a>
+                        </div>
+                        <div class="shp__pro__details">
+                            <h2><a href="/product/detail"><%=item.product.name%> </a></h2>
+                            <span class="quantity">QTY: <%= item.quantity %> </span>
+                            <span class="shp__price">$<%=item.product.sale.toLocaleString("en") %> </span>
+                        </div>
+                        <div class="remove__btn">
+                            <a href="javascript:void(0)" class="btn__remove" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } %>
+            
         </div>
         <ul class="shoping__total">
             <li class="subtotal">Subtotal:</li>
-            <li class="total__price">$130.00</li>
+            <% if (cart) { %>
+                <li class="total__price">$<%= cart.summary.toLocaleString("en") %> </li>
+            <% } else { %>
+                <li class="total__price">$0</li>
+            <% } %> 
+            
         </ul>
         <ul class="shopping__btn">
             <li><a href="/shop/cart">View Cart</a></li>
