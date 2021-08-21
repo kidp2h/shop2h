@@ -55,7 +55,7 @@ class App {
         InitializePassport();
         InitializePassportFacebook();
         // middlwares app
-        UserMiddleware.RenderDataUser(app);
+        UserMiddleware.DataUserLocal(app);
         // initialize router
         app.use("/", Routers.IndexRouter);
         app.use("/auth", Routers.AuthRouter);

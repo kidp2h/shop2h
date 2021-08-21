@@ -1,15 +1,25 @@
 import {Request, Response,NextFunction, Application} from "express"
-import { CategoryModel } from "../models";
+import { CategoryModel, CartModel } from "../models";
+import { ICart } from "../types/Cart";
 export namespace UserMiddleware {
     //this function will set locals item : user to save req.user to render into the views
-    export function RenderDataUser(app : Application ){
-        app.use(function(req : Request, res : Response, next : NextFunction){
+    export function DataUserLocal(app : Application ){
+        app.use(async function(req : Request, res : Response, next : NextFunction){
+            // category
             let listTypes = CategoryModel.getListTypes();
             res.locals.types = listTypes;
             if(req.user){
+                // info user
                 res.locals.user = req.user;
+                // cart user
+                const cart : ICart = await CartModel.getCartByUserId(req.user._id);
+                res.locals.cart = cart[0];
+
             }else{
-                res.locals.user = false;
+                res.locals = {
+                    user : false,
+                    cart : false
+                }
             }
             next();
         })
